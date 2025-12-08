@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>653</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow, QWidget#centralwidget {
+    background-color: #f0f2f5;  /* Gris muy suave, casi blanco */
+    color: #333333;             /* Texto gris oscuro (no negro puro) */
+}
+/* 2. Etiquetas */
+QLabel {
+    color: #595875;            /* Texto oscuro para contraste */
+    font-weight: bold;
+	font-size: 12px
+}
+
+/* 3. Entrada de datos */
+QComboBox {
+    background-color: #ffffff;
+    border: 1px solid #c0c0c0;
+    border-radius: 2px;
+    padding: 4px;
+    color: #333333;
+}
+
+QPushButton {
+    background-color: #a09ebf;  /* Gris base */
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 2px;         /* Casi rectangular */
+
+    /* EFECTO 3D: Luz arriba/izq, Sombra abajo/der */
+    border-top: 2px solid #707070;    /* Borde claro */
+    border-left: 2px solid #707070;   /* Borde claro */
+    border-bottom: 2px solid #202020; /* Borde oscuro */
+    border-right: 2px solid #202020;  /* Borde oscuro */
+}
+
+/* Estado PRESIONADO: Invertimos los colores o aplanamos */
+QPushButton:pressed {
+    background-color: #72719f;        /* Más oscuro */
+    border: 2px solid #202020;        /* Borde oscuro uniforme (hundido) */
+    padding-top: 8px;                /* Truco visual: mueve el texto un poco abajo */
+    padding-left: 8px;               /* mueve el texto un poco a la derecha */
+}
+
+/* Estado Deshabilitado */
+QPushButton:disabled {
+    background-color: #E6EEFE;
+    color: #888888;
+    border: 1px solid #666666;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="MyGLWidget" name="openGLWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>782</width>
+      <height>521</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="renderGroupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>540</y>
+      <width>781</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>21</y>
+       <width>211</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>-1</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>seleccione un modo de conexión:</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="modoConexionBox">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>19</y>
+       <width>331</width>
+       <height>24</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnIniciarServidor">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>17</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>iniciar servidor</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyGLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>myglwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

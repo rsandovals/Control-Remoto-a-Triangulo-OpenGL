@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>758</width>
+    <height>616</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Control App</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* 1. Fondo General */
+QMainWindow, QWidget#centralwidget {
+    background-color: #f0f2f5;  					/* Blanco palido (tinte grisaceo)  */
+    color: #333333;            			 					/* Carbón oscuro */
+}
+
+/* 2. Etiquetas */
+QLabel {
+    color: #595875;            								/* Púrpura grisáceo */
+    font-weight: bold;
+	font-size: 12px
+}
+
+/* 3. Contenedores */
+QGroupBox {
+    background-color: #ffffff; 					 		/* Blanco puro */
+    border: 1px solid #d1d1d1;
+	border-bottom: 2px solid #a09ebf;
+	border-right: 2px solid #a09ebf;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #72719f;             									/* Color de Título: Azul-magenta */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; 					/* Títulos centrado */
+    padding: 5px;
+}
+
+/* 4. Entradas */
+QTextEdit, QLineEdit, QComboBox {
+    background-color: #ffffff;									/* Blanco puro */
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    padding: 4px;
+    color: #333333;														/* Gris muy oscuro */
+}
+
+/* Efecto al pasar el mouse por encima de los inputs */
+QLineEdit:hover, QComboBox:hover {
+    border: 1px solid #0078D7;
+}
+
+QPushButton {
+	/* Estado HABILITADO (normal) */
+    background-color: #a09ebf;  								/* Violeta grisáceo */
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 2px;         										/* Casi rectangular */
+
+    /* EFECTO 3D: Luz arriba/izq, Sombra abajo/der */
+    border-top: 2px solid #707070;    						/* Borde claro */
+    border-left: 2px solid #707070;   							/* Borde claro */
+    border-bottom: 2px solid #202020; 					/* Borde oscuro */
+    border-right: 2px solid #202020;  						/* Borde oscuro */
+}
+
+/* Estado PRESIONADO: Invertimos los colores o aplanamos */
+QPushButton:pressed {
+    background-color: #72719f;        	/* Más oscuro: Azul-magenta */
+    border: 2px solid #202020;        		/* Borde gris oscuro oscuro (hundido) */
+    padding-top: 8px;              /* para efecto visual:: texto un poco abajo */
+    padding-left: 8px;               /* para efecto visual: texto un poco a la derecha */
+}
+
+/* Estado DESHABILITADO */
+QPushButton:disabled {
+    background-color: #E6EEFE;			/* Azul claro grisáceo */
+    color: #888888;									/* Gris medio */
+    border: 1px solid #666666;				/* Gris oscuro */
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="cfGroupBox">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>239</y>
+      <width>301</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>COLOR FONDO TRIANGULO</string>
+    </property>
+    <widget class="QLabel" name="labelR">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>38</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>R</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="sliderBlue">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>100</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="value">
+      <number>125</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="sliderRed">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>40</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="value">
+      <number>125</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelB">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>98</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>B</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelG">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>69</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>G</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="sliderGreen">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>70</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="value">
+      <number>125</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelRValue">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>40</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#ffffff;</string>
+     </property>
+     <property name="text">
+      <string>125</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelGValue">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>70</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string>125</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelBValue">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>100</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string>125</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="ciGroupBox">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>391</y>
+      <width>301</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>COLOR INTERIOR TRIANGULO</string>
+    </property>
+    <widget class="QSlider" name="sliderTriR">
+     <property name="geometry">
+      <rect>
+       <x>52</x>
+       <y>42</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="singleStep">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>255</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="sliderTriG">
+     <property name="geometry">
+      <rect>
+       <x>53</x>
+       <y>70</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="value">
+      <number>255</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="sliderTriB">
+     <property name="geometry">
+      <rect>
+       <x>54</x>
+       <y>100</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="value">
+      <number>255</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelWinR">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>41</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>R</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelWinG">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>70</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>G</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelWinB">
+     <property name="geometry">
+      <rect>
+       <x>22</x>
+       <y>99</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>B</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelWinRValue">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>42</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff</string>
+     </property>
+     <property name="text">
+      <string>255</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelWinGValue">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>70</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff</string>
+     </property>
+     <property name="text">
+      <string>255</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelWinBValue">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>100</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string>255</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>681</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>TABLERO DE CONEXIÓN</string>
+    </property>
+    <widget class="QPushButton" name="btnConectar">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>40</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>conectar</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="opcionesConexionBox">
+     <property name="geometry">
+      <rect>
+       <x>154</x>
+       <y>43</y>
+       <width>341</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="currentText">
+      <string extracomment="seleccione"/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="conexionlabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>44</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>-1</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Tipo de Conexión:</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="logTextEdit">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>90</y>
+       <width>611</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-color: 2px solid #053394;
+background-color: #E6EEFE;
+</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="controlGroupBox">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>200</y>
+      <width>681</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>TABLERO DE CONTROL</string>
+    </property>
+    <widget class="QGroupBox" name="ztGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>301</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>ROTACIÓN Y ZOOM TRIANGULO</string>
+     </property>
+     <widget class="QLabel" name="labelMaxAng">
+      <property name="geometry">
+       <rect>
+        <x>184</x>
+        <y>130</y>
+        <width>31</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>360°</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelMinAng">
+      <property name="geometry">
+       <rect>
+        <x>98</x>
+        <y>130</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>0°</string>
+      </property>
+     </widget>
+     <widget class="QDial" name="dialRotacion">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>30</y>
+        <width>121</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>360</number>
+      </property>
+     </widget>
+     <widget class="QSlider" name="sliderZoom">
+      <property name="geometry">
+       <rect>
+        <x>59</x>
+        <y>190</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>10</number>
+      </property>
+      <property name="maximum">
+       <number>300</number>
+      </property>
+      <property name="value">
+       <number>100</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <zorder>dialRotacion</zorder>
+     <zorder>labelMaxAng</zorder>
+     <zorder>labelMinAng</zorder>
+     <zorder>sliderZoom</zorder>
+    </widget>
+   </widget>
+   <zorder>controlGroupBox</zorder>
+   <zorder>cfGroupBox</zorder>
+   <zorder>ciGroupBox</zorder>
+   <zorder>groupBox_4</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>758</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
